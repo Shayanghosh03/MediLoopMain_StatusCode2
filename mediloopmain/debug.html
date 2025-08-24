@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediLoop - Database Debug</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .debug-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            font-family: 'Inter', sans-serif;
+        }
+        .log-entry {
+            border-left: 4px solid #3B82F6;
+            background-color: #F3F4F6;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-family: monospace;
+        }
+        .error {
+            border-left-color: #EF4444;
+            background-color: #FEE2E2;
+        }
+        .success {
+            border-left-color: #10B981;
+            background-color: #D1FAE5;
+        }
+        .test-form {
+            background-color: #FFFFFF;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="debug-container">
+        <h1 class="text-3xl font-bold text-center mb-6">MediLoop Database Debugging</h1>
+        
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-2xl font-semibold mb-4">Database Connection Test</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h3 class="text-lg font-medium mb-2">Test Connection</h3>
+                    <button onclick="testConnection()" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                        Test Database Connection
+                    </button>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium mb-2">Check Table Structure</h3>
+                    <button onclick="checkTable()" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">
+                        Check Donations Table
+                    </button>
+                </div>
+            </div>
+            
+            <div id="connectionResult" class="log-entry hidden"></div>
+            <div id="tableResult" class="log-entry hidden"></div>
+        </div>
+        
+        <div class="test-form mb-6">
+            <h2 class="text-2xl font-semibold mb-4">Test Donation Submission</h2>
+            
+            <form id="testForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Medication Name</label>
+                    <input type="text" name="medicationName" value="Test Medication" class="w-full p-2 border rounded-md">
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Dosage</label>
+                        <input type="text" name="dosage" value="500mg" class="w-full p-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Quantity</label>
+                        <input type="number" name="quantity" value="10" class="w-full p-2 border rounded-md">
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Expiry Date</label>
+                        <input type="date" name="expiryDate" value="<?php echo date('Y-m-d', strtotime('+1 year')); ?>" class="w-full p-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Condition</label>
+                        <select name="condition" class="w-full p-2 border rounded-md">
+                            <option value="excellent">Excellent</option>
+                            <option value="good">Good</option>
+                            <option value="fair">Fair</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium mb-1">Prescription Required</label>
+                    <div class="flex space-x-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="prescriptionRequired" value="yes" checked class="mr-2">
+                            <span>Yes</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="prescriptionRequired" value="no" class="mr-2">
+                            <span>No</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Donor Name</label>
+                        <input type="text" name="donorName" value="Test Donor" class="w-full p-2 border rounded-md">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Phone Number</label>
+                        <input type="tel" name="donorPhone" value="+1234567890" class="w-full p-2 border rounded-md">
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium mb-1">Address</label>
+                    <textarea name="donorAddress" class="w-full p-2 border rounded-md">123 Test Street, Test City</textarea>
+                </div>
+                
+                <div class="flex items-start">
+                    <input type="checkbox" name="safetyTerms" checked class="mr-2 mt-1">
+                    <label>I accept the safety terms</label>
+                </div>
+                
+                <button type="button" onclick="testSubmission()" class="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700">
+                    Test Submission
+                </button>
+            </form>
+            
+            <div id="testResult" class="log-entry hidden mt-4"></div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold mb-4">Troubleshooting Guide</h2>
+            
+            <div class="space-y-4">
+                <div class="p-4 bg-blue-50 rounded-md">
+                    <h3 class="font-medium text-blue-800">1. Database Connection Issues</h3>
+                    <p class="text-sm text-blue-600">Check your database credentials in config/database.php</p>
+                    <pre class="bg-gray-800 text-white p-2 rounded mt-2 text-sm">
+// Example of correct configuration
+private $host = "localhost";
+private $db_name = "mediloop";
+private $username = "your_username";
+private $password = "your_password";</pre>
+                </div>
+                
+                <div class="p-4 bg-blue-50 rounded-md">
+                    <h3 class="font-medium text-blue-800">2. Table Structure Issues</h3>
+                    <p class="text-sm text-blue-600">Make sure your table has the correct structure:</p>
+                    <pre class="bg-gray-800 text-white p-2 rounded mt-2 text-sm">
+CREATE TABLE donations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    medication_name VARCHAR(255) NOT NULL,
+    dosage VARCHAR(100) NOT NULL,
+    quantity INT NOT NULL,
+    expiry_date DATE NOT NULL,
+    med_condition VARCHAR(50) NOT NULL,
+    prescription_required ENUM('yes', 'no') NOT NULL,
+    donor_name VARCHAR(255) NOT NULL,
+    donor_phone VARCHAR(20) NOT NULL,
+    donor_address TEXT NOT NULL,
+    status ENUM('pending', 'verified', 'rejected', 'picked_up', 'distributed') DEFAULT 'pending',
+    verification_notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);</pre>
+                </div>
+                
+                <div class="p-4 bg-blue-50 rounded-md">
+                    <h3 class="font-medium text-blue-800">3. File Permission Issues</h3>
+                    <p class="text-sm text-blue-600">Make sure your PHP files have the correct permissions and your web server can write to the database.</p>
+                </div>
+                
+                <div class="p-4 bg-blue-50 rounded-md">
+                    <h3 class="font-medium text-blue-800">4. PHP Error Reporting</h3>
+                    <p class="text-sm text-blue-600">Enable error reporting in your PHP files to see what's going wrong:</p>
+                    <pre class="bg-gray-800 text-white p-2 rounded mt-2 text-sm">
+// Add this at the top of your PHP files
+error_reporting(E_ALL);
+ini_set('display_errors', 1);</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function testConnection() {
+            const resultDiv = document.getElementById('connectionResult');
+            resultDiv.classList.remove('hidden', 'error', 'success');
+            resultDiv.innerHTML = 'Testing database connection...';
+            
+            fetch('debug_test_connection.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        resultDiv.classList.add('success');
+                        resultDiv.innerHTML = `<strong>Success:</strong> ${data.message}<br>`;
+                        if (data.details) {
+                            resultDiv.innerHTML += `<pre>${JSON.stringify(data.details, null, 2)}</pre>`;
+                        }
+                    } else {
+                        resultDiv.classList.add('error');
+                        resultDiv.innerHTML = `<strong>Error:</strong> ${data.message}`;
+                        if (data.error) {
+                            resultDiv.innerHTML += `<br><pre>${data.error}</pre>`;
+                        }
+                    }
+                })
+                .catch(error => {
+                    resultDiv.classList.add('error');
+                    resultDiv.innerHTML = `<strong>Network Error:</strong> ${error.message}`;
+                });
+        }
+        
+        function checkTable() {
+            const resultDiv = document.getElementById('tableResult');
+            resultDiv.classList.remove('hidden', 'error', 'success');
+            resultDiv.innerHTML = 'Checking donations table structure...';
+            
+            fetch('debug_check_table.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        resultDiv.classList.add('success');
+                        resultDiv.innerHTML = `<strong>Success:</strong> ${data.message}<br>`;
+                        if (data.table_structure) {
+                            resultDiv.innerHTML += `<pre>${JSON.stringify(data.table_structure, null, 2)}</pre>`;
+                        }
+                    } else {
+                        resultDiv.classList.add('error');
+                        resultDiv.innerHTML = `<strong>Error:</strong> ${data.message}`;
+                        if (data.error) {
+                            resultDiv.innerHTML += `<br><pre>${data.error}</pre>`;
+                        }
+                    }
+                })
+                .catch(error => {
+                    resultDiv.classList.add('error');
+                    resultDiv.innerHTML = `<strong>Network Error:</strong> ${error.message}`;
+                });
+        }
+        
+        function testSubmission() {
+            const form = document.getElementById('testForm');
+            const formData = new FormData(form);
+            const resultDiv = document.getElementById('testResult');
+            
+            resultDiv.classList.remove('hidden', 'error', 'success');
+            resultDiv.innerHTML = 'Testing donation submission...';
+            
+            // Convert FormData to JSON
+            const jsonData = {};
+            for (const [key, value] of formData.entries()) {
+                jsonData[key] = value;
+            }
+            
+            fetch('process/donation.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(jsonData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    resultDiv.classList.add('success');
+                    resultDiv.innerHTML = `<strong>Success:</strong> ${data.message}<br>`;
+                    if (data.data) {
+                        resultDiv.innerHTML += `<pre>${JSON.stringify(data.data, null, 2)}</pre>`;
+                    }
+                } else {
+                    resultDiv.classList.add('error');
+                    resultDiv.innerHTML = `<strong>Error:</strong> ${data.message}`;
+                    if (data.errors) {
+                        resultDiv.innerHTML += `<br><pre>${JSON.stringify(data.errors, null, 2)}</pre>`;
+                    }
+                }
+            })
+            .catch(error => {
+                resultDiv.classList.add('error');
+                resultDiv.innerHTML = `<strong>Network Error:</strong> ${error.message}`;
+            });
+        }
+    </script>
+</body>
+</html>

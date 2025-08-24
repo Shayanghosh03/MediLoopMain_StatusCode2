@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Verification - MediLoop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-inter">
+    <!-- Navigation -->
+    <nav class="navbar bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-lg">
+        <div class="nav-container">
+            <div class="nav-logo group cursor-pointer transition-all duration-300 hover:scale-105" onclick="window.location.href='index.html'">
+                <i class="fas fa-pills text-2xl text-blue-600 group-hover:text-blue-700 transition-colors duration-300"></i>
+                <span class="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">MediLoop</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="login.html" class="nav-link group bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-all duration-300">
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    Login
+                </a></li>
+                <li><a href="signup.html" class="nav-link group bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition-all duration-300">
+                    <i class="fas fa-user-plus mr-2"></i>
+                    Sign Up
+                </a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero relative overflow-hidden min-h-screen flex items-center">
+        <div class="absolute inset-0 bg-gradient-to-br from-green-600 via-blue-600 to-indigo-700"></div>
+        <div class="absolute inset-0 bg-black/10"></div>
+        
+        <div class="hero-container relative z-10">
+            <div class="hero-content animate-fade-in-up text-center">
+                <h1 class="hero-title">
+                    <span class="highlight">Medication Verification</span><br>
+                    <span class="text-gradient">Safety & Authenticity Check</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Our comprehensive verification system ensures all medications are safe, authentic, and properly stored before reaching those in need.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verification Process Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Our Verification Process</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Every medication goes through a rigorous 5-step verification process to ensure maximum safety and authenticity.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Step 1: Visual Inspection -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-eye text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">1. Visual Inspection</h3>
+                    <p class="text-gray-600">Expert pharmacists examine packaging, seals, and physical condition of medications.</p>
+                </div>
+
+                <!-- Step 2: Authentication Check -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-shield-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">2. Authentication Check</h3>
+                    <p class="text-gray-600">Verify medication authenticity using advanced scanning and database verification.</p>
+                </div>
+
+                <!-- Step 3: Safety Assessment -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-heart text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">3. Safety Assessment</h3>
+                    <p class="text-gray-600">Comprehensive safety evaluation including drug interactions and contraindications.</p>
+                </div>
+
+                <!-- Step 4: Quality Testing -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105">
+                    <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-flask text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">4. Quality Testing</h3>
+                    <p class="text-gray-600">Laboratory testing to ensure medication potency and purity standards.</p>
+                </div>
+
+                <!-- Step 5: Final Approval -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105">
+                    <div class="w-16 h-16 bg-gradient-to-r from-teal-500 to-cyan-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-check-circle text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">5. Final Approval</h3>
+                    <p class="text-gray-600">Certified pharmacist approval and documentation for traceability.</p>
+                </div>
+
+                <!-- Verification Status -->
+                <div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105 text-white">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-certificate text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Verification Status</h3>
+                    <p class="mb-4">Track the verification status of your medications in real-time.</p>
+                    <button onclick="checkVerificationStatus()" class="bg-white text-green-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 group">
+                        <i class="fas fa-search mr-2 group-hover:scale-110 transition-transform duration-300"></i>
+                        Check Status
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verification Form Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Submit Medication for Verification</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Have medications to donate? Submit them for our comprehensive verification process.
+                </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl p-8 shadow-xl">
+                <form id="verificationForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="form-group">
+                            <label for="medicationName" class="form-label">
+                                <i class="fas fa-pills mr-2 text-blue-500"></i>
+                                Medication Name
+                            </label>
+                            <input type="text" id="medicationName" name="medicationName" placeholder="Enter medication name" required class="form-input">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="manufacturer" class="form-label">
+                                <i class="fas fa-industry mr-2 text-blue-500"></i>
+                                Manufacturer
+                            </label>
+                            <input type="text" id="manufacturer" name="manufacturer" placeholder="Enter manufacturer name" required class="form-input">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="batchNumber" class="form-label">
+                                <i class="fas fa-barcode mr-2 text-blue-500"></i>
+                                Batch Number
+                            </label>
+                            <input type="text" id="batchNumber" name="batchNumber" placeholder="Enter batch number" required class="form-input">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="expiryDate" class="form-label">
+                                <i class="fas fa-calendar-alt mr-2 text-blue-500"></i>
+                                Expiry Date
+                            </label>
+                            <input type="date" id="expiryDate" name="expiryDate" required class="form-input">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="quantity" class="form-label">
+                                <i class="fas fa-cubes mr-2 text-blue-500"></i>
+                                Quantity
+                            </label>
+                            <input type="number" id="quantity" name="quantity" placeholder="Number of units" required class="form-input">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="dosage" class="form-label">
+                                <i class="fas fa-weight mr-2 text-blue-500"></i>
+                                Dosage Strength
+                            </label>
+                            <input type="text" id="dosage" name="dosage" placeholder="e.g., 500mg" required class="form-input">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="storageCondition" class="form-label">
+                            <i class="fas fa-thermometer-half mr-2 text-blue-500"></i>
+                            Storage Condition
+                        </label>
+                        <select id="storageCondition" name="storageCondition" required class="form-input">
+                            <option value="">Select storage condition</option>
+                            <option value="room-temperature">Room Temperature</option>
+                            <option value="refrigerated">Refrigerated (2-8°C)</option>
+                            <option value="frozen">Frozen (-20°C)</option>
+                            <option value="controlled-room">Controlled Room Temperature</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="packagingCondition" class="form-label">
+                            <i class="fas fa-box mr-2 text-blue-500"></i>
+                            Packaging Condition
+                        </label>
+                        <select id="packagingCondition" name="packagingCondition" required class="form-input">
+                            <option value="">Select packaging condition</option>
+                            <option value="sealed">Sealed/Unopened</option>
+                            <option value="opened">Opened but intact</option>
+                            <option value="damaged">Damaged packaging</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="additionalNotes" class="form-label">
+                            <i class="fas fa-sticky-note mr-2 text-blue-500"></i>
+                            Additional Notes
+                        </label>
+                        <textarea id="additionalNotes" name="additionalNotes" placeholder="Any additional information about the medication..." rows="4" class="form-textarea"></textarea>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button type="submit" class="btn btn-primary group flex-1">
+                            <i class="fas fa-paper-plane mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            Submit for Verification
+                        </button>
+                        <button type="button" onclick="resetForm()" class="btn btn-secondary group flex-1">
+                            <i class="fas fa-redo mr-2 group-hover:rotate-180 transition-transform duration-300"></i>
+                            Reset Form
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verification Statistics -->
+    <section class="py-20 bg-gradient-to-br from-green-600 via-blue-600 to-indigo-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Verification Statistics</h2>
+                <p class="text-xl text-blue-100">Our commitment to safety and quality</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center text-white">
+                    <div class="text-4xl font-bold mb-2" data-target="99.8">0</div>
+                    <div class="text-blue-100">Success Rate (%)</div>
+                </div>
+                <div class="text-center text-white">
+                    <div class="text-4xl font-bold mb-2" data-target="15420">0</div>
+                    <div class="text-blue-100">Medications Verified</div>
+                </div>
+                <div class="text-center text-white">
+                    <div class="text-4xl font-bold mb-2" data-target="24">0</div>
+                    <div class="text-blue-100">Hours Average Time</div>
+                </div>
+                <div class="text-center text-white">
+                    <div class="text-4xl font-bold mb-2" data-target="100">0</div>
+                    <div class="text-blue-100">% Authenticity Check</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden">
+        <div class="footer-container relative z-10">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo group cursor-pointer" onclick="window.location.href='index.html'">
+                        <i class="fas fa-pills text-2xl text-amber-400 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xl font-bold text-amber-400 group-hover:text-amber-300 transition-colors duration-300">MediLoop</span>
+                    </div>
+                    <p class="text-gray-300 mb-4 leading-relaxed">Making healthcare accessible through community support and medication sharing.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="text-amber-400 font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#home" class="text-gray-300 hover:text-amber-400 transition-colors duration-300">Home</a></li>
+                        <li><a href="index.html#about" class="text-gray-300 hover:text-amber-400 transition-colors duration-300">About</a></li>
+                        <li><a href="index.html#features" class="text-gray-300 hover:text-amber-400 transition-colors duration-300">Features</a></li>
+                        <li><a href="index.html#contact" class="text-gray-300 hover:text-amber-400 transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="text-amber-400 font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="donate.html" class="text-gray-300 hover:text-amber-400 transition-colors duration-300">Donate Medication</a></li>
+                        <li><a href="find.html" class="text-gray-300 hover:text-amber-400 transition-colors duration-300">Find Medication</a></li>
+                        <li><a href="verify.html" class="text-gray-300 hover:text-amber-400 transition-colors duration-300">Verify Safety</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400 transition-colors duration-300">Emergency Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="text-amber-400 font-semibold mb-4">Contact Info</h4>
+                    <div class="contact-info-footer space-y-3">
+                        <div class="contact-item-footer group">
+                            <i class="fas fa-envelope text-amber-400 mr-3"></i>
+                            <span class="text-gray-300">info@mediloop.org</span>
+                        </div>
+                        <div class="contact-item-footer group">
+                            <i class="fas fa-phone text-amber-400 mr-3"></i>
+                            <span class="text-gray-300">+91 9641403781</span>
+                        </div>
+                        <div class="contact-item-footer group">
+                            <i class="fas fa-map-marker-alt text-amber-400 mr-3"></i>
+                            <span class="text-gray-300">APC Lecture hall, IISER Kolkata</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="text-gray-400">&copy; 2024 MediLoop. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Verification form handling
+        document.getElementById('verificationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                showNotification('Medication submitted for verification successfully! You will receive updates via email.', 'success');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Check verification status
+        function checkVerificationStatus() {
+            const trackingNumber = prompt('Enter your verification tracking number:');
+            if (trackingNumber) {
+                setTimeout(() => {
+                    showNotification(`Status for ${trackingNumber}: Verification in progress (Step 3/5)`, 'info');
+                }, 1000);
+            }
+        }
+
+        // Reset form
+        function resetForm() {
+            document.getElementById('verificationForm').reset();
+            showNotification('Form has been reset.', 'info');
+        }
+
+        // Notification function
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `fixed right-4 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full`;
+            
+            // Position notification below navbar (navbar height is 64px = 4rem)
+            notification.style.top = '5rem';
+            
+            switch(type) {
+                case 'success':
+                    notification.className += ' bg-green-500 text-white';
+                    break;
+                case 'error':
+                    notification.className += ' bg-red-500 text-white';
+                    break;
+                case 'info':
+                    notification.className += ' bg-blue-500 text-white';
+                    break;
+                default:
+                    notification.className += ' bg-gray-500 text-white';
+            }
+            
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'} mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 5000);
+        }
+
+        // Animate statistics
+        function animateStats() {
+            const stats = document.querySelectorAll('[data-target]');
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateStat = () => {
+                    if (current < target) {
+                        current += increment;
+                        stat.textContent = Math.ceil(current);
+                        requestAnimationFrame(updateStat);
+                    } else {
+                        stat.textContent = target;
+                    }
+                };
+                
+                updateStat();
+            });
+        }
+
+        // Trigger animation when section is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        const statsSection = document.querySelector('.bg-gradient-to-br.from-green-600');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediLoop - Delivery Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-gradient-to-br from-blue-50 via-green-50 to-purple-50 min-h-screen relative overflow-x-hidden">
+    <!-- Animated Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-green-400/20 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-green-400/10 to-blue-400/10 rounded-full blur-3xl animate-float" style="animation-delay: -1.5s;"></div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-lg relative z-10">
+        <div class="nav-container">
+            <div class="nav-logo group cursor-pointer transition-all duration-300 hover:scale-105" onclick="window.location.href='index.html'">
+                <i class="fas fa-pills text-2xl text-blue-600 group-hover:text-blue-700 transition-colors duration-300"></i>
+                <span class="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">MediLoop</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="login.html" class="nav-link group bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-all duration-300">
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    Login
+                </a></li>
+                <li><a href="signup.html" class="nav-link group bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition-all duration-300">
+                    <i class="fas fa-user-plus mr-2"></i>
+                    Sign Up
+                </a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-deliver relative overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white z-10">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <i class="fas fa-truck text-6xl md:text-8xl text-amber-400 mb-6 animate-float"></i>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up">
+                    Fast & Reliable
+                    <span class="text-amber-400">Medication Delivery</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-blue-100 animate-fade-in-up">
+                    We bring healthcare to your doorstep with our secure, temperature-controlled delivery service
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
+                    <button class="btn btn-primary text-lg px-8 py-4" onclick="scrollToForm()">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        Schedule Delivery
+                    </button>
+                    <button class="btn btn-secondary text-lg px-8 py-4" onclick="scrollToTracking()">
+                        <i class="fas fa-search mr-2"></i>
+                        Track Package
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why Choose Our Delivery Service?</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Professional, secure, and reliable medication delivery with real-time tracking</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="feature-card bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl text-center hover:shadow-xl transition-all duration-300">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Secure & Safe</h3>
+                    <p class="text-gray-600">Temperature-controlled packaging ensures medication integrity throughout delivery</p>
+                </div>
+                
+                <div class="feature-card bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl text-center hover:shadow-xl transition-all duration-300">
+                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-clock text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Fast Delivery</h3>
+                    <p class="text-gray-600">Same-day or next-day delivery options available in most areas</p>
+                </div>
+                
+                <div class="feature-card bg-gradient-to-br from-purple-50 to-violet-50 p-8 rounded-2xl text-center hover:shadow-xl transition-all duration-300">
+                    <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-map-marker-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Real-time Tracking</h3>
+                    <p class="text-gray-600">Track your package in real-time with SMS and email notifications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Form Section -->
+    <section id="delivery-form" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Schedule Your Delivery</h2>
+                    <p class="text-xl text-gray-600">Fill out the form below to arrange medication pickup and delivery</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+                    <form id="deliveryForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label for="fullName" class="form-label">
+                                    <i class="fas fa-user mr-2 text-blue-500"></i>
+                                    Full Name
+                                </label>
+                                <input type="text" id="fullName" name="fullName" required class="form-input" placeholder="Enter your full name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="form-label">
+                                    <i class="fas fa-phone mr-2 text-blue-500"></i>
+                                    Phone Number
+                                </label>
+                                <input type="tel" id="phone" name="phone" required class="form-input" placeholder="Enter your phone number">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label for="pickupAddress" class="form-label">
+                                    <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>
+                                    Pickup Address
+                                </label>
+                                <textarea id="pickupAddress" name="pickupAddress" rows="3" required class="form-textarea" placeholder="Enter pickup address"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="deliveryAddress" class="form-label">
+                                    <i class="fas fa-home mr-2 text-blue-500"></i>
+                                    Delivery Address
+                                </label>
+                                <textarea id="deliveryAddress" name="deliveryAddress" rows="3" required class="form-textarea" placeholder="Enter delivery address"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label for="medicationType" class="form-label">
+                                    <i class="fas fa-pills mr-2 text-blue-500"></i>
+                                    Medication Type
+                                </label>
+                                <select id="medicationType" name="medicationType" required class="form-input">
+                                    <option value="">Select medication type</option>
+                                    <option value="prescription">Prescription Medication</option>
+                                    <option value="over-the-counter">Over-the-Counter</option>
+                                    <option value="supplements">Supplements</option>
+                                    <option value="medical-supplies">Medical Supplies</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="deliveryDate" class="form-label">
+                                    <i class="fas fa-calendar mr-2 text-blue-500"></i>
+                                    Preferred Delivery Date
+                                </label>
+                                <input type="date" id="deliveryDate" name="deliveryDate" required class="form-input">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="specialInstructions" class="form-label">
+                                <i class="fas fa-info-circle mr-2 text-blue-500"></i>
+                                Special Instructions
+                            </label>
+                            <textarea id="specialInstructions" name="specialInstructions" rows="3" class="form-textarea" placeholder="Any special handling requirements or instructions"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="flex items-center">
+                                <input type="checkbox" id="terms" name="terms" required class="mr-3">
+                                <span class="text-gray-700">I agree to the <a href="#" class="text-blue-600 hover:underline">terms and conditions</a> and <a href="#" class="text-blue-600 hover:underline">privacy policy</a></span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-full text-lg py-4">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Schedule Delivery
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tracking Section -->
+    <section id="tracking" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Track Your Package</h2>
+                    <p class="text-xl text-gray-600">Enter your tracking number to get real-time updates</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12">
+                    <form id="trackingForm" class="space-y-6">
+                        <div class="form-group">
+                            <label for="trackingNumber" class="form-label">
+                                <i class="fas fa-search mr-2 text-blue-500"></i>
+                                Tracking Number
+                            </label>
+                            <input type="text" id="trackingNumber" name="trackingNumber" required class="form-input" placeholder="Enter your tracking number">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-secondary w-full text-lg py-4">
+                            <i class="fas fa-search mr-2"></i>
+                            Track Package
+                        </button>
+                    </form>
+                    
+                    <div id="trackingResult" class="mt-8 hidden">
+                        <!-- Tracking results will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Delivery Pricing</h2>
+                <p class="text-xl text-gray-600">Transparent pricing for all your delivery needs</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-rocket text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Express Delivery</h3>
+                    <div class="text-3xl font-bold text-blue-600 mb-6">₹499</div>
+                    <ul class="text-gray-600 space-y-2 mb-8">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Same-day delivery</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Priority handling</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Real-time tracking</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>SMS notifications</li>
+                    </ul>
+                    <button class="btn btn-primary w-full">Choose Express</button>
+                </div>
+                
+                <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl shadow-lg p-8 text-center text-white transform scale-105">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-star text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Standard Delivery</h3>
+                    <div class="text-3xl font-bold mb-6">₹299</div>
+                    <ul class="space-y-2 mb-8">
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Next-day delivery</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Secure packaging</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Email tracking</li>
+                        <li><i class="fas fa-check text-green-400 mr-2"></i>Standard handling</li>
+                    </ul>
+                    <button class="btn bg-white text-blue-600 hover:bg-gray-100 w-full">Choose Standard</button>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300">
+                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-leaf text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Economy Delivery</h3>
+                    <div class="text-3xl font-bold text-green-600 mb-6">₹149</div>
+                    <ul class="text-gray-600 space-y-2 mb-8">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>2-3 day delivery</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Basic packaging</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Email confirmation</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Standard handling</li>
+                    </ul>
+                    <button class="btn btn-secondary w-full">Choose Economy</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="footer bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden">
+        <!-- Footer Background Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-amber-400/10 to-orange-400/10 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-blue-400/10 to-purple-400/10 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+        </div>
+        
+        <div class="footer-container relative z-10">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo group cursor-pointer" onclick="window.location.href='index.html'">
+                        <i class="fas fa-pills text-2xl text-amber-400 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xl font-bold text-amber-400 group-hover:text-amber-300 transition-colors duration-300">MediLoop</span>
+                    </div>
+                    <p class="text-gray-300 mb-4 leading-relaxed">Making healthcare accessible through community support and medication sharing. Join us in building a healthier world together.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link group">
+                            <i class="fab fa-facebook group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="social-link group">
+                            <i class="fab fa-twitter group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="social-link group">
+                            <i class="fab fa-linkedin group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="social-link group">
+                            <i class="fab fa-instagram group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                        <a href="#" class="social-link group">
+                            <i class="fab fa-youtube group-hover:scale-110 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="text-amber-400 font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#home" class="text-gray-300 hover:text-amber-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            Home
+                        </a></li>
+                        <li><a href="index.html#about" class="text-gray-300 hover:text-amber-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            About
+                        </a></li>
+                        <li><a href="index.html#features" class="text-gray-300 hover:text-amber-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            Features
+                        </a></li>
+                        <li><a href="index.html#contact" class="text-gray-300 hover:text-amber-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                            Contact
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="text-amber-400 font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="donate.html" class="text-gray-300 hover:text-amber-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-heart text-xs mr-2 group-hover:scale-110 transition-transform duration-300"></i>
+                            Donate Medication
+                        </a></li>
+                        <li><a href="find.html" class="text-gray-300 hover:text-amber-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-search text-xs mr-2 group-hover:scale-110 transition-transform duration-300"></i>
+                            Find Medication
+                        </a></li>
+                        <li><a href="verify.html" class="text-gray-300 hover:text-amber-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-check-circle text-xs mr-2 group-hover:scale-110 transition-transform duration-300"></i>
+                            Verify Safety
+                        </a></li>
+                        <li><a href="deliver.html" class="text-gray-300 hover:text-amber-400 transition-colors duration-300 flex items-center group">
+                            <i class="fas fa-truck text-xs mr-2 group-hover:scale-110 transition-transform duration-300"></i>
+                            Delivery Service
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="text-amber-400 font-semibold mb-4">Contact Info</h4>
+                    <div class="contact-info-footer space-y-3">
+                        <div class="contact-item-footer group">
+                            <i class="fas fa-envelope text-amber-400 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                            <span class="text-gray-300">info@mediloop.org</span>
+                        </div>
+                        <div class="contact-item-footer group">
+                            <i class="fas fa-phone text-amber-400 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                            <span class="text-gray-300">+91 9641403781</span>
+                        </div>
+                        <div class="contact-item-footer group">
+                            <i class="fas fa-map-marker-alt text-amber-400 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                            <span class="text-gray-300">APC Lecture hall, IISER Kolkata</span>
+                        </div>
+                        <div class="contact-item-footer group">
+                            <i class="fas fa-clock text-amber-400 mr-3 group-hover:scale-110 transition-transform duration-300"></i>
+                            <span class="text-gray-300">24/7 Support Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="text-gray-400">&copy; 2024 MediLoop. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition-colors duration-300">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition-colors duration-300">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition-colors duration-300">Cookie Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition-colors duration-300">Accessibility</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Notification function
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `fixed right-4 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full`;
+            
+            // Position notification below navbar (navbar height is 64px = 4rem)
+            notification.style.top = '5rem';
+            
+            // Set background color based on type
+            switch(type) {
+                case 'success':
+                    notification.className += ' bg-green-500 text-white';
+                    break;
+                case 'error':
+                    notification.className += ' bg-red-500 text-white';
+                    break;
+                case 'info':
+                    notification.className += ' bg-blue-500 text-white';
+                    break;
+                default:
+                    notification.className += ' bg-gray-500 text-white';
+            }
+            
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'} mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 5000);
+        }
+
+        // Delivery form functionality
+        document.getElementById('deliveryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Show success message
+            showNotification('Delivery request submitted successfully! Our team will contact you within 2 hours to confirm details.', 'success');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Tracking form functionality
+        document.getElementById('trackingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const trackingNumber = document.getElementById('trackingNumber').value;
+            const trackingResult = document.getElementById('trackingResult');
+            
+            // Simulate tracking result
+            trackingResult.innerHTML = `
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Tracking: ${trackingNumber}</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                            <span class="text-gray-700">Package picked up from sender</span>
+                            <span class="ml-auto text-sm text-gray-500">Today, 10:30 AM</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                            <span class="text-gray-700">In transit to delivery center</span>
+                            <span class="ml-auto text-sm text-gray-500">Today, 2:15 PM</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
+                            <span class="text-gray-700">Out for delivery</span>
+                            <span class="ml-auto text-sm text-gray-500">Estimated: Tomorrow, 9:00 AM</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            trackingResult.classList.remove('hidden');
+        });
+        
+        // Smooth scrolling functions
+        function scrollToForm() {
+            document.getElementById('delivery-form').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function scrollToTracking() {
+            document.getElementById('tracking').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
