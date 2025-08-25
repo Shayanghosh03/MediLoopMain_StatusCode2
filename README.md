@@ -1,5 +1,7 @@
 # MediLoop - Medication Sharing & Donation Platform
 
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/9da699d5-acc4-404f-b2dd-71cf0aa045c3" />
+
 ## New Features Added
 
 ### 1. Email Functionality
