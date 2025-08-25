@@ -1,0 +1,130 @@
+# MediLoop - Medication Sharing & Donation Platform
+
+## New Features Added
+
+### 1. Email Functionality
+- Contact form now sends emails to your specified email address
+- Enhanced form with subject field and better validation
+- Configurable email service integration
+
+### 2. Deliver Button
+- Interactive deliver button in the features section
+- Shows notification when clicked
+- Simulates delivery service initiation
+
+### 3. Improved "Get in Touch" UI
+- Enhanced contact section with better visual design
+- Added more contact information (office address, support hours)
+- Improved form layout with labels and icons
+- Better responsive design for mobile devices
+
+### 4. Enhanced Footer Design
+- Added social media links
+- More comprehensive contact information
+- Additional service links
+- Better visual hierarchy and spacing
+- Privacy policy and terms links
+
+### 5. Logo Navigation
+- Clicking the MediLoop logo on any page redirects to the home page
+- Consistent navigation across all pages
+
+## Email Configuration
+
+To set up email functionality, follow these steps:
+
+### Option 1: EmailJS (Recommended)
+1. Sign up at [EmailJS](https://www.emailjs.com/)
+2. Create an email service (Gmail, Outlook, etc.)
+3. Create an email template
+4. Update `email-config.js` with your credentials:
+   ```javascript
+   const EMAIL_CONFIG = {
+       recipientEmail: 'your-email@example.com',
+       emailjs: {
+           serviceId: 'your-service-id',
+           templateId: 'your-template-id',
+           userId: 'your-user-id'
+       }
+   };
+   ```
+
+### Option 2: Formspree
+1. Sign up at [Formspree](https://formspree.io/)
+2. Create a new form
+3. Update `email-config.js`:
+   ```javascript
+   const EMAIL_CONFIG = {
+       recipientEmail: 'your-email@example.com',
+       formspree: {
+           endpoint: 'https://formspree.io/f/your-form-id'
+       }
+   };
+   ```
+
+### Option 3: Netlify Forms
+1. Deploy to Netlify
+2. Update `email-config.js`:
+   ```javascript
+   const EMAIL_CONFIG = {
+       recipientEmail: 'your-email@example.com',
+       netlify: {
+           formName: 'contact-form'
+       }
+   };
+   ```
+
+## File Structure
+```
+Status Code 2/
+├── index.html          # Main homepage with enhanced features
+├── login.html          # Login page with logo navigation
+├── signup.html         # Signup page with logo navigation
+├── donate.html         # Donate page with logo navigation
+├── find.html           # Find page with logo navigation
+├── verify.html         # Verify page with logo navigation
+├── styles.css          # Enhanced CSS with new styling
+├── script.js           # JavaScript with email and deliver functionality
+├── email-config.js     # Email configuration file
+└── README.md           # This file
+```
+
+## Features Overview
+
+### Contact Form
+- Name, email, subject, and message fields
+- Real-time validation
+- Email sending functionality
+- Success/error notifications
+
+### Deliver Button
+- Located in the features section
+- Interactive hover effects
+- Notification system integration
+
+### Navigation
+- Logo click redirects to home page
+- Consistent across all pages
+- Mobile-responsive design
+
+### Footer
+- Social media integration
+- Comprehensive contact information
+- Service links
+- Legal links
+
+## Browser Compatibility
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
+
+## Setup Instructions
+1. Update `email-config.js` with your email service credentials
+2. Test the contact form functionality
+3. Customize colors and styling in `styles.css` if needed
+4. Deploy to your web server
+
+## Support
+For technical support or questions about the implementation, please refer to the email configuration file or contact the development team.
+
