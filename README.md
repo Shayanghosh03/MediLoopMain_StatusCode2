@@ -36,17 +36,7 @@ https://mediloop.wuaze.com
 
 
 
-### Option 3: Netlify Forms
-1. Deploy to Netlify
-2. Update `email-config.js`:
-   ```javascript
-   const EMAIL_CONFIG = {
-       recipientEmail: 'your-email@example.com',
-       netlify: {
-           formName: 'contact-form'
-       }
-   };
-   ```
+
 
 ## File Structure
 ```
