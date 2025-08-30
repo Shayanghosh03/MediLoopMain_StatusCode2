@@ -34,50 +34,9 @@ https://mediloop.wuaze.com
 - Clicking the MediLoop logo on any page redirects to the home page
 - Consistent navigation across all pages
 
-## Email Configuration
 
-To set up email functionality, follow these steps:
 
-### Option 1: EmailJS (Recommended)
-1. Sign up at [EmailJS](https://www.emailjs.com/)
-2. Create an email service (Gmail, Outlook, etc.)
-3. Create an email template
-4. Update `email-config.js` with your credentials:
-   ```javascript
-   const EMAIL_CONFIG = {
-       recipientEmail: 'your-email@example.com',
-       emailjs: {
-           serviceId: 'your-service-id',
-           templateId: 'your-template-id',
-           userId: 'your-user-id'
-       }
-   };
-   ```
 
-### Option 2: Formspree
-1. Sign up at [Formspree](https://formspree.io/)
-2. Create a new form
-3. Update `email-config.js`:
-   ```javascript
-   const EMAIL_CONFIG = {
-       recipientEmail: 'your-email@example.com',
-       formspree: {
-           endpoint: 'https://formspree.io/f/your-form-id'
-       }
-   };
-   ```
-
-### Option 3: Netlify Forms
-1. Deploy to Netlify
-2. Update `email-config.js`:
-   ```javascript
-   const EMAIL_CONFIG = {
-       recipientEmail: 'your-email@example.com',
-       netlify: {
-           formName: 'contact-form'
-       }
-   };
-   ```
 
 ## File Structure
 ```
